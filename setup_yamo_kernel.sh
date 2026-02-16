@@ -27,6 +27,8 @@ cp -r ./yamo-native-agent "$TARGET_DIR/"
 cp ./BOOTSTRAP.yamo "$TARGET_DIR/"
 mkdir -p "$TARGET_DIR/docs"
 cp -r ./docs/* "$TARGET_DIR/docs/"
+mkdir -p "$TARGET_DIR/tools"
+cp -r ./tools/* "$TARGET_DIR/tools/"
 
 # 3. Create Memory directory and initial state
 echo -e "🧠 Initializing Zero-JSON semantic memory..."

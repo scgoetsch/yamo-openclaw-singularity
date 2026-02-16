@@ -10,6 +10,7 @@ The system follows a "Russian Doll" handoff model, preserving intent from bootst
 - **[Entry Point]**(BOOTSTRAP.yamo): The semantic BIOS of the system.
 - **[Kernel Orchestrator](yamo-native-agent/agent-orchestrator.yamo)**: The master scheduler for reactive and proactive tasks.
 - **[Foundational Soul](yamo-native-agent/foundational/agent-soul.yamo)**: The 4-Tier Constitutional Permission layer.
+- **[Tools Bridge](tools/memory_mesh.sh)**: Native connection to the YAMO MemoryMesh backend.
 
 ---
 

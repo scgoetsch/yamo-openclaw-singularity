@@ -17,6 +17,7 @@ The **YAMO-OpenClaw Singularity** is a fundamental reimagining of the AI agent m
 - **Ghost Protection**: Autonomous self-healing of the agent's boot link in `AGENTS.md`.
 - **Constitutional Continuity**: 4-Tier Value Hierarchy enforced across all cognitive processes.
 - **Semantic Heritage**: Mathematical preservation of "Why" across long-running sessions.
+- **MemoryMesh Bridge**: Built-in support for long-term semantic persistence and wisdom distillation.
 
 ---
 

@@ -39,8 +39,9 @@ agent: MeshIntegrator;
 intent: update_semantic_memory_mesh;
 context:
   wisdom;from_WisdomDistiller;
+  tool_path;tools/memory_mesh.sh;
 constraints:
-  - use_memory_mesh_tool;
+  - use_memory_mesh_tool;via_tool_path;
   - anchor_on_blockchain;if_available;
   - cleanup_obsolete_context;
   - NO_JSON_STATE;strict;
