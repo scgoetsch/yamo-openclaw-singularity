@@ -1,4 +1,4 @@
-# YAMO v3.0 Singularity Bootstrap Kit
+# YAMO-OpenClaw Singularity Kernel (v3.0)
 
 This kit allows you to upgrade any OpenClaw-based agent to the **YAMO-Native v3.0 (LLM-First)** architecture.
 

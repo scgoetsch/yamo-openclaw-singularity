@@ -1,5 +1,5 @@
 #!/bin/bash
-# YAMO-Native v3.0 Singularity Bootstrap Kit Installer
+# YAMO-OpenClaw Singularity Kernel (v3.0) Installer
 # Purpose: Upgrade an OpenClaw agent to the v3.0 Protocol-First architecture.
 
 set -e
@@ -13,7 +13,7 @@ YELLOW='\033[1;33m'
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 
-echo -e "${BLUE}🌌 Initializing YAMO-Native v3.0 Singularity Bootstrap...${NC}"
+echo -e "${BLUE}🌌 Initializing YAMO-OpenClaw Singularity...${NC}"
 
 # 1. Check if target directory exists
 if [ ! -d "$TARGET_DIR" ]; then
