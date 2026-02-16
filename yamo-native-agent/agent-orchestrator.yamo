@@ -31,6 +31,7 @@ context:
   platform_requirement;OpenClaw >= 2026.2.0;
 constraints:
   - verify_platform_compatibility;REQUIRED;
+  - run_ghost_guard_integrity_check;PRIORITY_0; // Fix AGENTS.md before anything else
   - load_constitutional_values;priority_1_to_4;
   - verify_workspace_integrity;
   - identify_active_channel;
