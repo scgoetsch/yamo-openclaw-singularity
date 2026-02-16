@@ -28,6 +28,7 @@ Comprehensive specifications and developer guides.
 - **[Architecture Guide](docs/architecture/YAMO_NATIVE_ARCHITECTURE.md)**: Deep dive into the v3.0 OS model.
 - **[Protocol Specification](docs/protocols/YAMO_V3_PROTOCOL.md)**: Syntax, Meta-Reasoning, and Semantic ECC rules.
 - **[Developer Guide](docs/guides/DEVELOPER_GUIDE.md)**: Instructions for adding new workflows and auditing state.
+- **[Distribution Kit](docs/distribution/)**: Templates for Discord, Twitter, and GitHub releases.
 
 ---
 
