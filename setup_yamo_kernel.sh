@@ -25,12 +25,23 @@ fi
 echo -e "📦 Deploying Kernel modules to $TARGET_DIR..."
 cp -r ./yamo-native-agent "$TARGET_DIR/"
 cp ./BOOTSTRAP.yamo "$TARGET_DIR/"
+cp ./package.json "$TARGET_DIR/"
 mkdir -p "$TARGET_DIR/docs"
 cp -r ./docs/* "$TARGET_DIR/docs/"
 mkdir -p "$TARGET_DIR/tools"
 cp -r ./tools/* "$TARGET_DIR/tools/"
 
-# 3. Create Memory directory and initial state
+# 3. Satisfy Dependencies
+echo -e "⚡ Initializing dependency substrate (npm install)..."
+cd "$TARGET_DIR"
+if command -v npm &> /dev/null; then
+    npm install --quiet
+else
+    echo -e "${YELLOW}⚠️ npm not found. You will need to run 'npm install' manually to enable memory features.${NC}"
+fi
+cd - > /dev/null
+
+# 4. Create Memory directory and initial state
 echo -e "🧠 Initializing Zero-JSON semantic memory..."
 mkdir -p "$TARGET_DIR/memory"
 if [ ! -f "$TARGET_DIR/memory/heartbeat-state.yamo" ]; then
