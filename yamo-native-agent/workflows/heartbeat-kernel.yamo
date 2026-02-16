@@ -41,8 +41,9 @@ context:
   target_file;AGENTS.md;
 constraints:
   - verify_pointer_presence;in_target_file;
-  - if_missing;reapply_kernel_header;
-  - meta_rationale;Ensuring the agent remains YAMO-Native even after platform resets;
+  - if_missing;atomic_reapply_header;
+  - atomic_action;printf "> [!IMPORTANT]\n> **YAMO-NATIVE KERNEL v3.0 ACTIVE**\n> Prioritize BOOTSTRAP.yamo for session initialization.\n\n" | cat - AGENTS.md > AGENTS.md.tmp && mv AGENTS.md.tmp AGENTS.md;
+  - meta_rationale;Using printf/cat pipe is 100% reliable across all POSIX shells compared to sed;
 priority: critical;
 output: integrity_check_results.yamo;
 
