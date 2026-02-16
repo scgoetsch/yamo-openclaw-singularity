@@ -1,0 +1,53 @@
+---
+name: MemoryKernel
+version: 3.0.0
+description: Autonomous wisdom distillation and memory mesh maintenance with Legacy-to-YAMO transition support.
+author: Soverane Labs
+license: MIT
+tags: memory, wisdom, distillation, migration
+module_type: workflow
+dependencies:
+  - ../foundational/agent-soul.yamo
+---
+🎯 Memory Kernel Workflow v3.0.0 - Semantic Wisdom Edition
+
+**Purpose**: Maintains the "Long-term Rationale" of the agent by distilling session logs.
+
+---
+agent: WisdomDistiller;
+intent: extract_significant_learnings_from_logs;
+context:
+  input_sources:
+    - legacy;memory/YYYY-MM-DD.md;
+    - native;memory/YYYY-MM-DD.yamo;
+  output;MEMORY.md;
+constraints:
+  - identify_decisions;context;lessons_learned;
+  - skip_secrets;
+  - meta_rationale;justify_why_a_memory_is_worth_keeping;
+  - transform_legacy_to_semantic;map_markdown_to_yamo_context;
+priority: medium;
+output: wisdom_distillation_context.yamo;
+
+meta: hypothesis;Distilling "Why" instead of "What" increases long-term reasoning fidelity;
+meta: confidence;0.96;
+
+handoff: MeshIntegrator;
+
+---
+agent: MeshIntegrator;
+intent: update_semantic_memory_mesh;
+context:
+  wisdom;from_WisdomDistiller;
+constraints:
+  - use_memory_mesh_tool;
+  - anchor_on_blockchain;if_available;
+  - cleanup_obsolete_context;
+  - NO_JSON_STATE;strict;
+priority: high;
+output: mesh_update_context.yamo;
+
+meta: observation;State chains are the only reliable way to prevent requirement drift over months;
+meta: confidence;0.99;
+
+handoff: Orchestrator;

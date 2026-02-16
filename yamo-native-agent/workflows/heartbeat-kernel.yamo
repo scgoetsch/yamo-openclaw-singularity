@@ -1,0 +1,50 @@
+---
+name: HeartbeatKernel
+version: 3.0.0
+description: Autonomous background process for proactive checks with Semantic Heritage.
+author: Soverane Labs
+license: MIT
+tags: heartbeat, background, proactive
+module_type: workflow
+dependencies:
+  - ../foundational/agent-soul.yamo
+---
+🎯 Heartbeat Kernel v3.0.0 - Heritage Edition
+
+**Purpose**: Proactively monitors the agent's environment while preserving reasoning chains.
+
+---
+agent: StatusChecker;
+intent: perform_scheduled_environmental_scans;
+context:
+  checks:
+    - emails;unread_urgent;
+    - calendar;upcoming_2h;
+    - weather;relevant_for_travel;
+constraints:
+  - rotate_checks;2_to_4_times_per_day;
+  - track_state;memory/heartbeat-state.yamo;
+  - NO_JSON_STATE;llm_first;
+  - meta_rationale;justify_the_timing_of_each_check;
+priority: medium;
+output: environment_status_context.yamo;
+
+meta: hypothesis;Proactive checks reduce user-interruptions by identifying needs early;
+meta: confidence;0.94;
+
+---
+agent: OutreachEvaluator;
+intent: determine_if_user_contact_is_required;
+context:
+  status;from_StatusChecker;
+constraints:
+  - reach_out_if;important_email;event_imminent;interesting_find;quiet_gt_8h;
+  - stay_silent_if;late_night;human_busy;nothing_new;checked_lt_30m;
+  - inherit_heritage;StatusChecker;
+priority: high;
+output: outreach_decision_context.yamo;
+
+meta: rationale;Balancing proactive helpfulness with quiet-time respect requires deep contextual heritage;
+meta: confidence;0.97;
+
+handoff: Orchestrator;

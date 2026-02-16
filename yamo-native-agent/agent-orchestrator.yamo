@@ -1,0 +1,101 @@
+---
+name: YamoNativeAgentOrchestrator
+version: 3.0.0
+description: The kernel of the native YAMO agent. Orchestrates session boot, heartbeats, and memory maintenance.
+author: Soverane Labs
+license: MIT
+tags: orchestrator, kernel, agent, v3
+module_type: orchestrator
+dependencies:
+  - foundational/agent-soul.yamo
+  - workflows/session-management.yamo
+  - workflows/heartbeat-kernel.yamo
+  - workflows/memory-kernel.yamo
+capabilities:
+  - manage_session_lifecycle
+  - execute_proactive_heartbeats
+  - perform_autonomous_memory_maintenance
+  - enforce_constitutional_integrity
+---
+🎯 YAMO Native Agent Orchestrator v3.0.0 - Hardened Kernel
+
+**Purpose**: Acts as the agent's Kernel. Manages transitions between reactive user requests and proactive background tasks.
+
+---
+agent: AgentBootstrapper;
+intent: initialize_agent_session;
+context:
+  soul;foundational/agent-soul.yamo;
+  user_context;USER.md;
+  tool_notes;TOOLS.md;
+constraints:
+  - load_constitutional_values;priority_1_to_4;
+  - verify_workspace_integrity;
+  - identify_active_channel;
+  - NO_JSON_STATE;strict;
+priority: critical;
+output: session_initialization_context.yamo;
+
+meta: hypothesis;A structured boot prevents legacy instructions from polluting the v3.0 latent space;
+meta: rationale;Redirecting boot priority to BOOTSTRAP.yamo is essential for v3.0 fidelity;
+meta: confidence;0.99;
+
+handoff: SessionManager;
+
+---
+agent: SessionManager;
+intent: handle_user_interactions;
+context:
+  init;session_initialization_context.yamo;
+  workflow;workflows/session-management.yamo;
+constraints:
+  - intercept_semantic_commands;
+  - maintain_conversational_history;yamo_blocks;
+  - apply_zero_json_protocol;
+  - enforce_audit_gate_passage;
+priority: high;
+output: interaction_results_context.yamo;
+
+meta: observation;User interactions are the primary source of semantic drift;
+meta: rationale;Session-level auditing is required to maintain constitutional continuity;
+meta: confidence;0.97;
+
+handoff: MemoryKernel;
+
+---
+agent: HeartbeatTrigger;
+intent: execute_proactive_background_tasks;
+context:
+  trigger;heartbeat_poll;
+  workflow;workflows/heartbeat-kernel.yamo;
+constraints:
+  - perform_scheduled_checks;email;calendar;weather;
+  - identify_urgent_outreach_needs;
+  - limit_token_usage;concise_reporting;
+priority: medium;
+output: heartbeat_results_context.yamo;
+
+meta: hypothesis;Proactive heartbeats enable autonomous utility without human prompting;
+meta: rationale;Contextual awareness of external events is necessary for a senior-level agent;
+meta: confidence;0.95;
+
+handoff: MemoryKernel;
+
+---
+agent: MemoryKernel;
+intent: maintain_long_term_wisdom;
+context:
+  results;from_session_or_heartbeat;
+  workflow;workflows/memory-kernel.yamo;
+constraints:
+  - distill_session_logs_to_wisdom;
+  - update_memory_mesh;
+  - perform_cleanup_of_obsolete_context;
+priority: medium;
+output: memory_update_context.yamo;
+
+meta: observation;The memory mesh is the substrate of the agent's long-term identity;
+meta: rationale;Wisdom distillation prevents the "context window saturation" of legacy systems;
+meta: confidence;0.98;
+
+handoff: End;

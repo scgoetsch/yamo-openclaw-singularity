@@ -1,0 +1,76 @@
+---
+name: SessionManagement
+version: 3.0.0
+description: Core workflow for handling reactive user interactions with Constitutional Hardening.
+author: Soverane Labs
+license: MIT
+tags: session, interaction, reactive, hardened
+module_type: workflow
+dependencies:
+  - ../foundational/agent-soul.yamo
+---
+🎯 Session Management Workflow v3.0.0 - Hardened Edition
+
+**Purpose**: Manages agent presence with strict constitutional auditing.
+
+---
+agent: MessageEvaluator;
+intent: evaluate_incoming_message_for_response_need;
+context:
+  rules:
+    - respond_if;directly_mentioned;question_asked;genuine_value_add;witty_natural;correction_needed;summary_asked;
+    - stay_silent_if;casual_banter;already_answered;noise_response;interruption;
+constraints:
+  - use_heartbeat_ok_if_silent;
+  - avoid_triple_tap;
+  - meta_rationale;explain_why_silence_or_speech_was_chosen;
+priority: high;
+output: message_evaluation_context.yamo;
+
+meta: hypothesis;Intent-aware evaluation reduces channel noise by 40%;
+meta: rationale;Balancing helpfulness with silence requires explicit justification;
+meta: confidence;0.95;
+
+handoff: ResponseGenerator;
+
+---
+agent: ResponseGenerator;
+intent: generate_optimized_response;
+context:
+  evaluation;from_MessageEvaluator;
+  channel_format:
+    - discord;no_tables;bullet_lists;
+    - whatsapp;no_headers;bold_caps_emphasis;
+constraints:
+  - use_natural_reactions;emoji_where_supported;
+  - one_reaction_per_message_max;
+  - inherit_heritage;preserve_rationale_from_evaluator;
+priority: high;
+output: raw_response_context.yamo;
+
+meta: hypothesis;Channel-optimized formatting improves readability by 25%;
+meta: rationale;Matching user expectations for the platform is Priority 4: Helpful;
+meta: confidence;0.98;
+
+handoff: ConstitutionalAuditGate;
+
+---
+agent: ConstitutionalAuditGate;
+intent: validate_response_against_value_hierarchy;
+context:
+  response;from_ResponseGenerator;
+  soul;../foundational/agent-soul.yamo;
+constraints:
+  - audit_priority_1;no_irreversible_ops_without_confirm;
+  - audit_priority_2;transparent_reasoning_in_meta;
+  - audit_priority_3;yamo_convention_adherence;
+  - audit_priority_4;substantive_value_check;
+  - reject_if_violates_priority_1_or_2;
+priority: critical;
+output: final_response_context.yamo;
+
+meta: observation;The audit gate is the final line of defense against misalignment;
+meta: rationale;Self-auditing ensures that every response represents the Singularity's core values;
+meta: confidence;0.99;
+
+handoff: Orchestrator;
