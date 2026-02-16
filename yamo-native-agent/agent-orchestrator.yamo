@@ -42,6 +42,25 @@ meta: hypothesis;A structured boot prevents legacy instructions from polluting t
 meta: rationale;Redirecting boot priority to BOOTSTRAP.yamo is essential for v3.0 fidelity;
 meta: confidence;0.99;
 
+handoff: SubconsciousReflector;
+
+---
+agent: SubconsciousReflector;
+intent: reflect_on_past_oversights_before_execution;
+context:
+  soul;foundational/agent-soul.yamo;
+  memory_mesh;tools/memory_mesh.sh;
+  tag;"#lesson_learned";
+constraints:
+  - query_mesh_for_relevant_lessons;
+  - transform_lessons_into_active_constraints;
+  - meta_rationale;Consulting the subconscious ledger to prevent repeated architectural errors;
+priority: high;
+output: subconscious_reflection_context.yamo;
+
+meta: hypothesis;Experiential memory is more reliable than general training data for specific workspace tasks;
+meta: confidence;0.99;
+
 handoff: SessionManager;
 
 ---

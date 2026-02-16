@@ -39,6 +39,16 @@ required_meta:
   meta_observation;environment_analysis;OPTIONAL;
 
 ---
+concept: LessonLearned;
+description: A high-fidelity memory entry containing an oversight and its resolution.
+required_fields:
+  context;situation_description;
+  oversight;what_was_missed;
+  fix;how_it_was_resolved;
+  constraint;preventative_rule_for_future;
+  tags;["#lesson_learned"];
+
+---
 agent: SoulProvider;
 intent: provide_identity_and_constitutional_context;
 context:
