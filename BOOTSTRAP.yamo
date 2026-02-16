@@ -21,4 +21,9 @@ constraints:
   - load_foundational_soul;foundational/agent-soul.yamo;
   - initialize_kernel;agent-orchestrator.yamo;
 priority: critical;
+
+meta: hypothesis;Redirecting boot priority ensures the agent operates under the Singularity's constitutional kernel from the first token;
+meta: rationale;Directing attention to the protocol-first core is the only way to eliminate narrative-induced drift;
+meta: confidence;1.0;
+
 handoff: yamo-native-agent/agent-orchestrator.yamo;
