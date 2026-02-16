@@ -28,7 +28,9 @@ context:
   soul;foundational/agent-soul.yamo;
   user_context;USER.md;
   tool_notes;TOOLS.md;
+  platform_requirement;OpenClaw >= 2026.2.0;
 constraints:
+  - verify_platform_compatibility;REQUIRED;
   - load_constitutional_values;priority_1_to_4;
   - verify_workspace_integrity;
   - identify_active_channel;

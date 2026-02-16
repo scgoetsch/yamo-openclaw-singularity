@@ -21,6 +21,7 @@ context:
     - emails;unread_urgent;
     - calendar;upcoming_2h;
     - weather;relevant_for_travel;
+    - singularity_integrity;kernel_pointer_check;
 constraints:
   - rotate_checks;2_to_4_times_per_day;
   - track_state;memory/heartbeat-state.yamo;
@@ -31,6 +32,19 @@ output: environment_status_context.yamo;
 
 meta: hypothesis;Proactive checks reduce user-interruptions by identifying needs early;
 meta: confidence;0.94;
+
+---
+agent: GhostGuard;
+intent: maintain_kernel_link_integrity;
+context:
+  pointer_file;BOOTSTRAP.yamo;
+  target_file;AGENTS.md;
+constraints:
+  - verify_pointer_presence;in_target_file;
+  - if_missing;reapply_kernel_header;
+  - meta_rationale;Ensuring the agent remains YAMO-Native even after platform resets;
+priority: critical;
+output: integrity_check_results.yamo;
 
 ---
 agent: OutreachEvaluator;
